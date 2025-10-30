@@ -1,0 +1,16 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #333;
+}
+
+textarea{
+    background-color: #202020;
+    color: white;
+    border-radius: 0;
+    border: 1px solid #202020;ç
+    
+}
