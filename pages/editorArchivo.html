@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Archivos</title>
+</head>
+<body>
+    <main id="file-editor-app">
+        
+        <div id="file-path-controls">
+            <label for="file-path">Ruta del Archivo:</label>
+            <input  type="text"  id="file-path"  placeholder="/drivers/etc/hosts" value="" aria-label="Campo para ingresar la ruta del archivo a editar">
+            <button type="button" id="open-button">Abrir</button>
+        </div>
+        
+        <hr>
+
+        <textarea 
+            id="editor-content" 
+            placeholder="Contenido del archivo aparecerá aquí. Soporta texto y Base64."
+            rows="15" 
+            cols="80" 
+            disabled 
+            aria-label="Área de edición de contenido de archivo"
+        ></textarea>
+        
+        <div id="editor-actions">
+            <button type="button" id="save-button" disabled>
+                Guardar
+            </button>
+            <button type="button" id="close-button" disabled>
+                Cerrar
+            </button>
+        </div>
+
+        <p id="status-message" role="alert">
+            Esperando la ruta de un archivo para abrir...
+        </p>
+
+    </main>
+    
+</body>
+</html>
