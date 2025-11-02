@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <meta name="description" content="Un browser (navegador) simple">
+        <meta name="author" content="Orlando Valdez / Jenry Youssef / Oscar Torres">
+        <title>Navegador</title>
     </head>
     <body>
-        <header role="navigation" aria-label="Barra de direcciones del navegador">
+
+        <header>
+            <nav role="navigation" aria-label="Barra de direcciones del navegador">
             <form id="url-form">
                 <label for="url-input" class="visually-hidden">Introduce la URL</label>
-                <input  type="url"  id="url-input"  name="url"  placeholder="ruta" required>
+                <input  type="url"  id="url-input"  name="url"  placeholder="https.. o ruta/local/" required>
                 <button type="submit" id="go-button">Ir</button>
             </form>
+            </nav>
         </header>
 
         <hr>
