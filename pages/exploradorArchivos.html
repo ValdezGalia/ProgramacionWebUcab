@@ -1,59 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Un explorador de archivos tree view (vista de arbol)">
+        <meta name="author" content="Orlando Valdez / Jenry Youssef / Oscar Torres">
         <title>Explorador de Archivos</title>
     </head>
 
     <body>
-        <div role="tree" aria-label="Estructura del sistema de archivos">
-            <ul>
-                <li>
-                    📂 / <ul>
-                        <li>
-                            📂 src/
+
+        <header>
+            <h1>Explorador de Archivos</h1>
+        </header>
+
+        <main>
+            <hr>
+            <nav aria-label="Estructura del sistema de archivos">
+                <ul>
+                    <li>
+                        <details open>
+                            <summary>📂 / </summary>
                             <ul>
                                 <li>
-                                    📄 index.html
-                                </li>
-                                <li>
-                                    📂 css/
-                                    <ul>
-                                        <li>
-                                            📄 styles.css
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    📂 js/
-                                    <ul>
-                                        <li>
-                                            📄 main.js
-                                        </li>
-                                        <li>
-                                            📄 utils.js
-                                        </li>
-                                    </ul>
+                                    <details open>
+                                        <summary>📂 src/ </summary>
+                                        <ul>
+                                            <li>
+                                                📄 index.html
+                                            </li>
+                                            <li>
+                                                <details open>
+                                                    <summary>📂 css/</summary>
+                                                    <ul>
+                                                        <li>
+                                                            📄 styles.css
+                                                        </li>
+                                                    </ul>
+                                                </details>
+                                            </li>
+                                            <li>
+                                                <details open>
+                                                    <summary>📂 js/</summary>
+                                                    <ul>
+                                                        <li>
+                                                            📄 main.js
+                                                        </li>
+                                                        <li>
+                                                            📄 utils.js
+                                                        </li>
+                                                    </ul>
+                                                </details>
+                                            </li>
+                                        </ul>
+                                    </details>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            📂 assets/
+                        </details> 
+                    </li>
+                    <li>
+                        <details open>
+                            <summary>📂 assets/</summary>
                             <ul>
                                 <li>
-                                    📂 images/
+                                    <details>
+                                    <summary>📂 images/</summary>
+                                    </details>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            📄 README.md
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </body>
+                        </details>
+                    </li>
+                    <li>
+                        📄 README.md
+                    </li>
+                </ul>
+            </details>
+        </li>
+    </ul>
+            </nav>
+        </main>
+</body>
 
 </html>

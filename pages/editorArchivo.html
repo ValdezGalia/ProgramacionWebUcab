@@ -1,43 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Un editor de archivos simple que soporta texto y Base64">
+    <meta name="author" content="Orlando Valdez / Jenry Youssef / Oscar Torres">
     <title>Editor de Archivos</title>
 </head>
 <body>
-    <main id="file-editor-app">
-        
-        <div id="file-path-controls">
-            <label for="file-path">Ruta del Archivo:</label>
-            <input  type="text"  id="file-path"  placeholder="/drivers/etc/hosts" value="" aria-label="Campo para ingresar la ruta del archivo a editar">
-            <button type="button" id="open-button">Abrir</button>
-        </div>
-        
-        <hr>
+    <main id="file-editor">
 
-        <textarea 
-            id="editor-content" 
-            placeholder="Contenido del archivo aparecerá aquí. Soporta texto y Base64."
-            rows="15" 
-            cols="80" 
-            disabled 
-            aria-label="Área de edición de contenido de archivo"
-        ></textarea>
+        <header>
+            <h1>Editor de Archivos</h1>
+        </header>
+
+        <form id="editor-form" action="#" method="post">
+
+            <fieldset id="file-controls">
+                <legend>Controles del Archivo</legend>
+                <div id="file-path-controls">
+                    <label for="file-path">Ruta del Archivo:</label>
+                    <input  type="text"  id="file-path"  placeholder="/drivers/etc/hosts" value="" aria-label="Campo para ingresar la ruta del archivo a editar">
+                    <button type="button" id="open-button">Abrir</button>
+                </div>
+            </fieldset>
+            
+            <hr>
+
+            <fieldset id="editor-area">
+                <legend>Contenido del Editor</legend>                
+                <textarea 
+                    id="editor-content" 
+                    placeholder="Contenido del archivo aparecerá aquí. Soporta texto y Base64."
+                    rows="15" 
+                    cols="80" 
+                    disabled 
+                    aria-label="Área de edición de contenido de archivo"
+                ></textarea>
         
-        <div id="editor-actions">
-            <button type="button" id="save-button" disabled>
-                Guardar
-            </button>
-            <button type="button" id="close-button" disabled>
-                Cerrar
-            </button>
-        </div>
+                <div id="editor-actions">
+                    <button type="button" id="save-button" disabled>
+                        Guardar
+                    </button>
+                    <button type="button" id="close-button" disabled>
+                        Cerrar
+                    </button>
+                </div>
+            </fieldset>
+        </form>
 
-        <p id="status-message" role="alert">
-            Esperando la ruta de un archivo para abrir...
-        </p>
 
+        <footer>
+            <p id="status-message" role="alert">
+                Esperando la ruta de un archivo para abrir...
+            </p>
+        </footer>
     </main>
     
 </body>
