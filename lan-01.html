@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Orlando Valdez / Jenry Youssef / Oscar Torres">
     <title>NetOps Workstation: Estación de Trabajo</title>
-    </head>
+</head>
+
 <body>
 
     <header>
@@ -13,7 +16,7 @@
     </header>
 
     <main id="workstation-container">
-        
+
         <nav id="app-navigation" aria-label="Aplicaciones de la estación de trabajo">
             <ul id="app-list">
                 <li><a href="#" data-tool="lineaComandos">Terminal</a></li>
@@ -26,20 +29,14 @@
         <hr>
         <!-- Contenedor de herramientas de forma dinamica y sostenible -->
         <section id="application-display">
-            <iframe 
-                id="tool-iframe" 
-                src="pages/lineaComandos.html" 
-                sandbox="allow-scripts allow-same-origin" 
-                title="Aplicación interactiva"
-                width="99.5%"
-                height="700px"
-            ></iframe>
+            <iframe id="tool-iframe" src="pages/lineaComandos.html" sandbox="allow-scripts allow-same-origin"
+                title="Aplicación interactiva" width="99.5%" height="700px"></iframe>
         </section>
 
     </main>
 
     <footer aria-label="Estado y Diagnóstico">
-        <p>Estado de la Estación: Conectada | <span class="user">Usuario</span></p> 
+        <p>Estado de la Estación: Conectada | <span class="user">Usuario</span></p>
     </footer>
 
     <!-- <script>
@@ -49,14 +46,15 @@
 
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    
-                    const toolName = event.target.dataset.tool; 
+                    event.preventDefault();
 
-                    const newSrc = `pages/${toolName}.html`; 
-                    
-                    iframe.src = newSrc; 
+                    const toolName = event.target.dataset.tool;
 
+                    const newSrc = `pages/${toolName}.html`;
+
+                    iframe.src = newSrc;
+                    
+                    /*Esto aun no hace nada ya que aun no se implementa la logica que distige la clase active*/
                     navLinks.forEach(navLink => navLink.classList.remove('active'));
                     event.target.classList.add('active');
                 });
@@ -65,4 +63,5 @@
     </script> -->
 
 </body>
+
 </html>
