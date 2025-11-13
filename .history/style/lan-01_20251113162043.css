@@ -1,0 +1,30 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    color: white
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a {
+    /* Mantiene tu diseño base: centrado y sin subrayado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    /* Propiedades visuales de "App Button" */
+    color: white; /* Color del texto */
+    background-color: #007bff; /* Color de fondo principal (Azul Primario) */
+    padding: 12px 25px; /* Relleno ajustado */
+    margin: 8px; /* Margen para separarlos */
+    border: none; /* Quitamos el borde sólido inicial */
+    border-radius: 8px; /* Bordes redondeados para un look moderno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transiciones para animaciones suaves */
+    font-weight: 600; /* Texto un poco más grueso */
+    min-width: 150px; /* Asegura un ancho mínimo para verse como botón/tarjeta */
+}

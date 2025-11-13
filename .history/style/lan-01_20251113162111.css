@@ -1,0 +1,44 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    color: white
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a {
+    /* Mantiene tu diseño base: centrado y sin subrayado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    /* Propiedades visuales de "App Button" */
+    color: white; /* Color del texto */
+    background-color: #007bff; /* Color de fondo principal (Azul Primario) */
+    padding: 12px 25px; /* Relleno ajustado */
+    margin: 8px; /* Margen para separarlos */
+    border: none; /* Quitamos el borde sólido inicial */
+    border-radius: 8px; /* Bordes redondeados para un look moderno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transiciones para animaciones suaves */
+    font-weight: 600; /* Texto un poco más grueso */
+    min-width: 150px; /* Asegura un ancho mínimo para verse como botón/tarjeta */
+}
+
+/* Estado de interacción (Hover) */
+nav ul li a:hover {
+    background-color: #0056b3; /* Un azul más oscuro al pasar el ratón */
+    transform: translateY(-2px); /* Un ligero efecto de elevación */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra un poco más pronunciada */
+}
+
+/* Estado activo/presionado */
+nav ul li a:active {
+    background-color: #004085; /* Color aún más oscuro al hacer clic */
+    transform: translateY(0); /* Vuelve a la posición original */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra reducida */
+}

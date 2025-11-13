@@ -1,0 +1,55 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    color: white
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+
+    /* Estilos visuales de App */
+    text-decoration: none;
+    color: #444444; 
+    background-color: #f0f0f0; 
+    padding: 15px 10px; 
+    margin: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    transition: all 0.2s ease;
+    width: 100px; 
+    text-align: center;
+}
+
+/* Estilos para el Ícono (la imagen) */
+nav ul li a .app-icon {
+    width: max-content; /* Tamaño del icono */
+    height: max-content;
+    margin-bottom: 5px; /* Espacio entre el icono y la etiqueta de texto */
+    /* Asegura que la imagen no tenga un borde o estilo propio que moleste */
+    border: none;
+}
+
+/* Estilos para el Texto (la etiqueta) */
+nav ul li a span {
+    font-size: 0.85em; /* Fuente pequeña para la etiqueta */
+    font-weight: 500;
+    margin-top: 5px;
+    color: #444444; /* Asegura el color del texto */
+}
+
+/* Interacción: Estado Hover (Al pasar el ratón) */
+nav ul li a:hover {
+    background-color: #e0e0e0; /* Un poco más oscuro al pasar el ratón */
+    border-color: #a0a0a0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.02); /* Un ligero crecimiento para resaltar */
+}

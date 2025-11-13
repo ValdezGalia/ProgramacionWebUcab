@@ -24,8 +24,10 @@
         <hr>
         <!-- Contenedor de herramientas de forma dinamica y sostenible -->
         <section id="application-display">
-            <iframe id="tool-iframe" src="pages/lineaComandos.html" sandbox="allow-scripts allow-same-origin"
-                title="Aplicación interactiva" width="99.5%" height="700px"></iframe>
+            <div class="app-window">
+                <iframe id="tool-iframe" src="pages/lineaComandos.html" sandbox="allow-scripts allow-same-origin"
+                    title="Aplicación interactiva" width="99.5%" height="700px"></iframe>
+            </div>
         </section>
 
     </main>
@@ -34,7 +36,28 @@
         <p>Estado de la Estación: Conectada | <span class="user">Usuario</span></p>
     </footer>
 
-    <script src="js/lan-windows-01.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const iframe = document.getElementById('tool-iframe');
+            const navLinks = document.querySelectorAll('#app-list a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    debugger
+                    event.preventDefault();
+
+                    const toolName = event.target.dataset.tool;
+                    const newSrc = `pages/${toolName}.html`;
+
+                    iframe.src = newSrc;
+                    
+                    /*Esto aun no hace nada ya que aun no se implementa la logica que distige la clase active*/
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    event.target.classList.add('active');
+                });
+            });
+        });
+    </script>
 
 </body>
 

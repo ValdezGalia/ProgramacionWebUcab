@@ -1,0 +1,44 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    color: white
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+
+    /* Estilos visuales de App */
+    text-decoration: none;
+    color: #444444; 
+    background-color: #f0f0f0; 
+    padding: 15px 10px; 
+    margin: 8px;
+    border: 1px solid #cccccc; /* Borde más suave */
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+    transition: all 0.2s ease;
+    width: 100px; /* Ancho fijo para que parezca un icono de escritorio */
+    text-align: center;
+}
+
+/* Estado de interacción (Hover) */
+nav ul li a:hover {
+    background-color: #0056b3; /* Un azul más oscuro al pasar el ratón */
+    transform: translateY(-2px); /* Un ligero efecto de elevación */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra un poco más pronunciada */
+}
+
+/* Estado activo/presionado */
+nav ul li a:active {
+    background-color: #004085; /* Color aún más oscuro al hacer clic */
+    transform: translateY(0); /* Vuelve a la posición original */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra reducida */
+}

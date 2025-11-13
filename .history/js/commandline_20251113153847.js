@@ -6,7 +6,6 @@ textarea.addEventListener('keypress', ({keyCode}) => {
 
         switch (command) {
             case 'ping':
-                console.log("Hola mundo")
                 
             break;
         

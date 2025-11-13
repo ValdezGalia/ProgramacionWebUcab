@@ -1,6 +1,7 @@
 const textarea = document.getElementById('cli');
 
-textarea.addEventListener('keypress', ({keyCode}) => {
+textarea.addEventListener('keypress', (event) => {
+    console.log(event)
     if(keyCode === 13){
         const command = textarea.value;
 
