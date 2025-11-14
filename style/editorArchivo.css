@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Momo+Signature&display=swap');
+
+.momo-signature-regular {
+  font-family: "Momo Signature", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header{
+    background-color: #40A7D6;
+    color: beige;
+    padding: 10px;
+}
+
+
+h1{
+    text-align: center;
+    font-family: "Momo Signature", cursive;
+    font-size:x-large;
+}
+
+body{
+    background-color: beige;
+}
+
+#file-controls{
+    font-family: "Momo Signature", cursive;
+    width: 40%;
+    margin: 0 auto; 
+    margin-top: 3%;
+    border-radius: 10px;
+    border-color: #40A7D6;
+    border-width: 10px;
+
+}
+
+#file-controls legend, label{
+    color: #473929;
+}
+
+#file-controls input{
+    font-family:'Times New Roman', Times, serif;
+    font-size: medium;
+    border-radius: 10px;
+    width: 300px;
+}
+
+
+#file-controls button{
+    font-family: "Momo Signature", cursive;
+    border-radius: 10px;
+    color: #302B29;
+    background-color: #7AA0FF;
+    width: 15%;
+    transition: transform 0.3s ease;  
+}
+
+#file-controls button:hover{
+    transform: scale(1.1);
+}
+
+
+#file-controls label{
+    font-size: medium;
+}
+
+#editor-area {
+    width: 50%;
+    margin: 0 auto; 
+    margin-top: 3%; 
+    border-radius: 10px;
+    border-color: #40A7D6;
+    border-width: 10px;
+
+}
+
+#editor-area legend{
+    font-family: "Momo Signature", cursive;
+    color: #473929;
+}
+
+#editor-area textarea{
+    font-family:'Times New Roman', Times, serif;
+    font-size: medium;
+    border-radius: 10px;
+
+}
+
+#editor-actions button{
+    font-family: "Momo Signature", cursive;
+    display: flow-root;
+    color: #302B29;
+    width: 15%;
+    transition: transform 0.3s ease;
+}
+
+#save-button {
+  float: left;
+  margin-left: 30%;
+  background-color: #A1ED32;
+  border-radius: 10px;
+}
+
+#save-button:hover{
+    transform: scale(1.1);
+}
+
+#close-button:hover{
+    transform: scale(1.1);
+}
+
+
+#close-button {
+  float: right;
+  margin-right: 30%;
+  background-color: #ED6432;
+  border-radius: 10px;
+}
+
+#status-message{
+    font-family: "Momo Signature", cursive;
+    text-align: center;
+    color: #473929;
+}

@@ -1,0 +1,107 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;      
+    font-family: Tahoma, "MS Sans Serif", Arial, sans-serif;
+    display: flow-root; 
+    background-color: #c0c0c0; 
+}
+
+header {
+    font-family: Tahoma, "MS Sans Serif", Arial, sans-serif; 
+    background-color: #000080; 
+    width: 100%;
+    border: 2px outset #c0c0c0; 
+}
+
+h1 {
+    font-size: 16px;
+    color: white;
+    margin: 0; 
+    padding: 15px;
+    font-weight: bold;
+}
+
+
+main {
+    display: flow-root; 
+}
+
+main nav {
+    float: left; 
+    width: 30%;
+    margin: 20px; 
+    background-color: white;
+    border: 5px solid #B3B3B3;
+    padding: 15px; 
+    min-height: 400px;
+}
+
+.panel-derecho {
+    float: left; 
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 0; 
+    background-color: white;
+    border: 5px solid #B3B3B3;
+    padding: 15px;
+    min-height: 400px;
+}
+
+
+nav ul {
+    list-style-type: none;
+    padding-left: 10px; 
+}
+
+nav summary {
+    list-style: none; 
+}
+
+nav summary::before {
+    content: '[+] ';
+    font-family: monospace; 
+}
+
+nav details[open] > summary::before {
+    content: '[-] ';
+}
+
+.panel-derecho h2 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #000080; 
+}
+
+.panel-derecho ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.panel-derecho li {
+    margin-bottom: 5px;
+}
+
+#barra-estado {
+    background-color: #c0c0c0;
+    border: 2px solid;
+    border-top-color: #808080;
+    border-left-color: #808080;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    margin: 0 20px 20px 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #000080;
+}
+
+#barra-estado p {
+    margin: 0;
+}
