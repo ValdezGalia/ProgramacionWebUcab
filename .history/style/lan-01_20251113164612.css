@@ -1,0 +1,193 @@
+/* html, body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #333;
+    color: white
+}
+
+nav ul{
+    margin: 5px;
+    padding: 5px;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #979797; 
+    background-color: #1f1f1f; 
+    padding: 1px; 
+    margin: 5px;
+    border: 1px solid #111111;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    transition: all 0.2s ease;
+    width: 100px; 
+    text-align: center;
+}
+
+nav ul li a .app-icon {
+    width: 40px; 
+    height: 40px;
+    margin-bottom: 5px; 
+    border: none;
+}
+
+nav ul li a span {
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-top: 5px;
+    color: #979797; 
+}
+
+nav ul li a:hover {
+    background-color: #e0e0e0; 
+    border-color: #a0a0a0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.02); 
+} */
+
+/* Colores de la interfaz: Estilo Oscuro */
+:root {
+    --bg-primary: #1e1e1e; /* Fondo principal (Oscuro) */
+    --bg-secondary: #252526; /* Fondo de contenedores/paneles */
+    --color-text: #cccccc; /* Texto principal */
+    --color-accent: #0078d4; /* Azul de acento (como Windows) */
+    --border-color: #333333; /* Color de borde y separadores */
+}
+
+/* Base Global */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente tipo Windows */
+    background-color: var(--bg-primary);
+    color: var(--color-text);
+}
+
+/* Contenedor Principal (Simula el Escritorio) */
+#workstation-container {
+    display: flex;
+    flex-direction: row; /* Navegación a la izquierda, área de trabajo a la derecha */
+    height: calc(100vh - 40px); /* 100% del alto menos el footer */
+}
+
+/* 1. Navegación (Barra de Aplicaciones Lateral) */
+#app-navigation {
+    width: 120px; /* Ancho fijo para la barra de iconos */
+    background-color: var(--bg-secondary);
+    padding: 10px 0;
+    border-right: 1px solid var(--border-color);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#app-list {
+    display: flex;
+    flex-direction: column; /* Iconos apilados verticalmente */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#app-list li {
+    margin: 5px 0;
+}
+
+/* Estilo del Ícono/Botón de Aplicación */
+#app-list a {
+    /* Tu configuración de flexbox para el ícono y texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    
+    color: var(--color-text);
+    background-color: transparent; /* Fondo transparente por defecto */
+    padding: 10px 5px;
+    margin: 0 auto;
+    width: 90px;
+    border: 1px solid transparent; /* Borde transparente por defecto */
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Estilos de la Imagen (Icono) */
+.app-icon {
+    width: 32px; /* Iconos más pequeños y limpios */
+    height: 32px;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5)); /* Sombra sutil en el icono */
+}
+
+/* Estilos del Texto (Etiqueta) */
+#app-list a span {
+    font-size: 0.75em; /* Etiqueta pequeña */
+    font-weight: 400;
+    text-align: center;
+    color: var(--color-text);
+}
+
+/* Interacción: Hover (Efecto de selección) */
+#app-list a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Resaltado sutil */
+    border-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+/* Estado Activo (La aplicación seleccionada) */
+#app-list a.active {
+    background-color: var(--color-accent); /* Resaltado con color de acento */
+    border-color: var(--color-accent);
+    color: white; /* Texto blanco para el activo */
+    /* Asegúrate de que el span también cambie de color si fuera necesario */
+}
+#app-list a.active span {
+    color: white;
+}
+
+/* 2. Área de Visualización (Pantalla de la Aplicación) */
+#application-display {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 10px;
+    background-color: var(--bg-primary); 
+    overflow: hidden; /* Maneja el contenido del iframe */
+}
+
+#tool-iframe {
+    /* Simula una ventana de aplicación */
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: white; /* El iframe puede tener un fondo más claro para contrastar */
+}
+
+/* Línea de separación (ya no es necesaria con el border-right, pero la mantenemos oculta) */
+hr {
+    display: none;
+}
+
+/* 3. Footer (Barra de Tareas/Estado) */
+footer {
+    height: 40px;
+    display: flex;
+    justify-content: flex-end; /* Alinear información a la derecha */
+    align-items: center;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 0 15px;
+    font-size: 0.9em;
+}
+
+.user {
+    font-weight: bold;
+    color: var(--color-accent); /* Resalta el nombre de usuario */
+}

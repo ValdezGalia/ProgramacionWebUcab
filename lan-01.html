@@ -5,24 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Orlando Valdez / Jenry Youssef / Oscar Torres">
+    <link rel="stylesheet" href="/style/lan-01.css">
     <title>NetOps Workstation: Estación de Trabajo</title>
 </head>
 
 <body>
-
-    <header>
-        <h1>NetOps Workstation | GamePlaya</h1>
-        <p>Simulación de una estación de trabajo para operaciones de red y desarrollo web.</p>
-    </header>
-
     <main id="workstation-container">
 
         <nav id="app-navigation" aria-label="Aplicaciones de la estación de trabajo">
             <ul id="app-list">
-                <li><a href="#" data-tool="lineaComandos">Terminal</a></li>
-                <li><a href="#" data-tool="navegador">Navegador Web</a></li>
-                <li><a href="#" data-tool="exploradorArchivos">Explorador</a></li>
-                <li><a href="#" data-tool="editorArchivo">Editor</a></li>
+                <li><a href="#" data-tool="lineaComandos"><img src="assets/img/lineaComandos.png" class="app-icon" alt="lineaComandos">linea Comandos</a></li>
+                <li><a href="#" data-tool="navegador"><img src="assets/img/navegador.png" class="app-icon" alt="Navegador">Navegador</a></li>
+                <li><a href="#" data-tool="exploradorArchivos"><img src="assets/img/exploradorArchivos.png" class="app-icon" alt="exploradorArchivos">explorador Archivos</a></li>
+                <li><a href="#" data-tool="editorArchivo"><img src="assets/img/editorArchivo.png" class="app-icon" alt="editorArchivo">editorArchivo</a></li>
             </ul>
         </nav>
 
@@ -39,28 +34,9 @@
         <p>Estado de la Estación: Conectada | <span class="user">Usuario</span></p>
     </footer>
 
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const iframe = document.getElementById('tool-iframe');
-            const navLinks = document.querySelectorAll('#app-list a');
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-
-                    const toolName = event.target.dataset.tool;
-
-                    const newSrc = `pages/${toolName}.html`;
-
-                    iframe.src = newSrc;
-                    
-                    /*Esto aun no hace nada ya que aun no se implementa la logica que distige la clase active*/
-                    navLinks.forEach(navLink => navLink.classList.remove('active'));
-                    event.target.classList.add('active');
-                });
-            });
-        });
-    </script> -->
+    <script src="js/lan-windows-helpers.js"></script>
+    <script src="js/lan-windows-modal.js"></script>
+    <script src="js/lan-windows-01.js"></script>
 
 </body>
 

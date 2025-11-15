@@ -1,0 +1,52 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    color: white
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+
+    /* Estilos visuales de App */
+    text-decoration: none;
+    color: #979797; 
+    background-color: #1f1f1f; 
+    padding: 1px; 
+    margin: 8px;
+    border: 1px solid #111111;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    transition: all 0.2s ease;
+    width: 100px; 
+    text-align: center;
+}
+
+nav ul li a .app-icon {
+    width: 40px; 
+    height: 40px;
+    margin-bottom: 5px; 
+    border: none;
+}
+
+nav ul li a span {
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-top: 5px;
+    color: #979797; 
+}
+
+/* Interacción: Estado Hover (Al pasar el ratón) */
+nav ul li a:hover {
+    background-color: #e0e0e0; 
+    border-color: #a0a0a0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.02); 
+}
