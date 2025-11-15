@@ -1,4 +1,3 @@
-
 /* Colores de la interfaz: Estilo Oscuro */
 :root {
     --bg-primary: #1e1e1e; /* Fondo principal (Oscuro) */
@@ -6,6 +5,10 @@
     --color-text: #cccccc; /* Texto principal */
     --color-accent: #0078d4; /* Azul de acento (como Windows) */
     --border-color: #333333; /* Color de borde y separadores */
+    /* Sizes: keep consistent between light and dark themes */
+    --base-font-size: 16px;
+    --taskbtn-min-width: 70px;
+    --taskbtn-min-height: 34px;
 }
 
 /* Base Global */
@@ -16,6 +19,7 @@ html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente tipo Windows */
     background-color: var(--bg-primary);
     color: var(--color-text);
+    font-size: var(--base-font-size);
     overflow-y: hidden;
 }
 
@@ -64,10 +68,12 @@ html, body {
 }
 
 .app-icon {
-    width: 32px; 
+    width: 32px;
     height: 32px;
-    margin-bottom: 5px;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+    margin: 0 0 4px 0;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
 }
 
 #app-list a {
@@ -113,13 +119,11 @@ hr {
 }
 
 footer {
-    height: 40px;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: center;
     align-items: center;
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
-    padding: 0 15px;
     font-size: 0.9em;
 }
 
@@ -157,22 +161,22 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
-    background-color: #3f3f3f; /* Color de la barra de título */
-    color: white;
+    background-color: var(--titlebar-bg, #3f3f3f); /* Color de la barra de título (variable por tema) */
+    color: var(--titlebar-text, #ffffff);
     font-size: 0.9em;
-    cursor: move; /* Indica que la ventana se puede arrastrar (aunque no implementaremos el arrastre sin una librería) */
+    cursor: move; /* Indica que la ventana se puede arrastrar */
     border-bottom: 1px solid var(--border-color);
 }
 
 .window-controls button {
     background: none;
     border: none;
-    color: white;
+    color: var(--color-text);
     font-size: 1.2em;
     margin-left: 5px;
     cursor: pointer;
     padding: 2px 5px;
-    transition: background-color 0.1s;
+    transition: background-color 0.12s ease, color 0.12s ease;
 }
 
 .window-controls button:hover {
@@ -193,7 +197,7 @@ footer {
 
 /* --- ESTADOS DE LA VENTANA --- */
 
-/* 1. Estado Maximizado (Ocupa todo el área de display) */
+/* Estado Maximizado (Ocupa todo el área de display) */
 .app-window.maximized {
     position: absolute; 
     top: 0;
@@ -205,9 +209,12 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* 2. Estado Minimizado (Oculta la ventana) */
+/* Estado Minimizado (Oculta la ventana) */
 .app-window.minimized {
-    display: none; /* Oculta el iframe, pero lo mantiene "abierto" lógicamente */
+    display: none !important;
+    pointer-events: none;
+    z-index: 0 !important;
+    transition: none !important;
 }
 
 /* Ejemplo de CSS que necesitas en lan-01.css */
@@ -216,19 +223,351 @@ footer {
 #application-display {
     position: relative; /* Importante para que las ventanas absolutas se posicionen respecto a él */
     /* Define un alto fijo para que las ventanas no se escapen, e.g., 700px */
-    height: 902px; 
+    height: auto; 
     overflow: hidden; /* Opcional: Oculta partes de ventanas si intentan salirse */
 }
 
-/* La ventana de la aplicación */
-.app-window {
-    position: absolute; /* CLAVE para poder manipular top/left */
-    /* Establece un tamaño y estilo inicial para la ventana */
-    width: 600px;
-    min-height: 400px;
-    background: #f0f0f0;
-    border: 1px solid #aaa;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* El z-index es manejado por JS, pero un valor inicial es bueno */
-    z-index: 100; 
+    /* ------------------ Taskbar and Task Buttons ------------------ */
+    /* Taskbar is placed inside the footer; left side holds window buttons, right side shows status + clock + theme */
+    .app-taskbar {
+        display: flex;
+        align-items: center;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background: var(--taskbar-bg, rgba(20,20,20,0.06));
+        color: var(--taskbar-text, var(--color-text));
+    }
+
+    .taskbar-left { display: flex; align-items: center; justify-content: center; box-shadow: none !important;}
+    .taskbar-right { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+
+    .footer-status {
+        font-size: 0.95em;
+        color: var(--taskbar-text, var(--color-text));
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+
+    .task-btn {
+        padding: 2px 0px;
+        border: none;
+        border-radius: 4px;
+        background: var(--taskbtn-bg, #333);
+        color: var(--taskbtn-text, #fff);
+        cursor: pointer;
+        min-width: var(--taskbtn-min-width, 70px);
+        text-align: center;
+        display: flex;
+        align-items: center ! IMPORTANT;
+        justify-content: center ! IMPORTANT;
+        min-height: var(--taskbtn-min-height, 34px);
+        transition: opacity 0.12s 
+        ease, background-color 0.12s 
+        ease, color 0.12s 
+        ease, transform 0.08s 
+        ease ! IMPORTANT;
+        opacity: 1;
+        /* align-content: center; */
+        flex-wrap: nowrap;
+    }
+
+    .task-btn--minimized {
+        opacity: 0.6;
+    }
+
+    .task-btn img, .task-btn svg {
+        width: 18px;
+        height: 18px;
+        display: inline-block; /* allow vertical-align for better centering */
+        object-fit: contain;
+        margin-right: 8px;
+        margin-top: 0; margin-bottom: 0;
+        vertical-align: middle;
+    }
+
+    /* icon wrapper used in task buttons: ensure vertical centering and flex participation */
+    .task-btn__icon {
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        flex: 0 0 18px;
+        align-self: center;
+        vertical-align: middle;
+        margin: 0;
+    }
+
+    /* Hint debajo de la navegación para informar sobre Shift+Click */
+    .instance-hint {
+        font-size: 0.75em;
+        /* Use theme-aware variable so hint is visible in both dark and light themes */
+        color: var(--instance-hint-color, var(--color-text));
+        padding: 6px 10px;
+        margin-top: 8px;
+        text-align: center;
+    }
+
+    /* Toasts simples en la esquina superior derecha */
+    .app-toast-container {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .app-toast {
+        background: rgba(40,40,40,0.95);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        transform: translateY(-6px);
+        opacity: 0;
+        transition: transform 0.22s ease, opacity 0.22s ease;
+        font-size: 0.9em;
+    }
+
+    .app-toast.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+
+    /* Task button icon + label behavior */
+    .task-btn__icon {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+
+    .task-btn__label {
+        display: none; /* hidden by default, shown if icon not found or on hover */
+        margin-left: 6px;
+        font-size: 0.9em;
+    }
+
+    .task-btn:hover .task-btn__label {
+        display: inline-block; /* reveal label on hover for accessibility */
+    }
+
+    .task-btn { align-items: center; justify-content: center; }
+
+    /* Badge for instance count */
+    .task-btn__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 18px;
+        height: 18px;
+        padding: 0px;
+        border-radius: 50%;
+        background: var(--color-accent);
+        color: #fff;
+        font-size: 0.75em;
+        margin-left: 15px;
+    }
+
+    .task-btn__badge:empty { display: none; }
+
+    /* Clock and theme toggle styles */
+    .taskbar-clock {
+        color: var(--color-text);
+        font-size: 0.95em;
+        padding: 4px 2px;
+    }
+
+    .theme-toggle-btn {
+        background: transparent;
+        border: none;
+        color: var(--color-text);
+        font-size: 0.9em;
+        cursor: pointer;
+        padding: 4px 4px;
+        border-radius: 4px;
+        align-items: center;
+        display: inline-flex;
+    }
+
+    .theme-toggle-btn:hover { background: rgba(255,255,255,0.04); }
+
+    /* Close-all button style */
+    .close-all-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.06);
+        color: var(--taskbar-text, var(--color-text));
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85em;
+    }
+
+    .close-all-btn:hover {
+        background: rgba(255,255,255,0.04);
+    }
+
+    /* visual for disabled state when button is present but not clickable */
+    .close-all-btn[disabled], .close-all-btn.is-disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        filter: grayscale(0.25);
+    }
+
+/* Modal: overlay + centered dialog --------------------------------- */
+.app-modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: none; /* shown by JS */
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 99999; /* above windows/taskbar */
 }
+
+.app-modal {
+    /* width: 92%;
+    max-width: 480px;
+    background: var(--panel-bg, #ffffff);
+    color: var(--panel-fg, #111111);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    padding: 18px;
+    transform: translateY(-6px);
+    transition: transform 180ms ease, opacity 180ms ease; */
+
+    width: 100%;
+    max-width: 236px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    padding: 35px;
+    transform: translateY(-6px);
+    transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.app-modal__body {
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+}
+
+.app-modal__message {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.app-modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.app-modal__btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.app-modal__btn--confirm {
+    background: var(--color-accent, #e74c3c);
+    color: white;
+    border: none;
+}
+
+.app-modal__btn--cancel {
+    background: transparent;
+    color: var(--muted-fg, #333333);
+}
+
+.theme-dark .app-modal {
+    background: #1f1f1f;
+    color: #f1f1f1;
+}
+.theme-dark .app-modal__btn {
+    border-color: rgba(255,255,255,0.06);
+}
+.theme-dark .app-modal__btn--cancel {
+    color: #ddd;
+}
+
+    /* Light theme variables override */
+    .theme-light {
+        /* Make whites a little warmer/less harsh and ensure good contrast */
+        --bg-primary: #f4f5f6;
+        --bg-secondary: #f8f8f9; /* not pure white to avoid harsh contrast */
+        --color-text: #1f1f1f; /* darker text for readability */
+        --border-color: #e0e0e0;
+        --taskbar-bg: rgba(255,255,255,0.92);
+        --taskbar-text: #1f1f1f;
+        --taskbtn-bg: #efefef;
+        --taskbtn-text: #1f1f1f;
+        --titlebar-bg: #e9e9ea;
+        --titlebar-text: #1f1f1f;
+        --instance-hint-color: rgba(0,0,0,0.65);
+    }
+    
+    /* Dark-theme specific tweaks: slightly smaller text and pressed look for theme icon */
+    .theme-dark {
+        /* --taskbar-bg: rgba(44, 44, 44, 0.85);*/
+        --taskbar-text: var(--color-text);
+        --taskbtn-bg: #333333;
+        --taskbtn-text: #ffffff;
+        --titlebar-bg: #3f3f3f;
+        --titlebar-text: #ffffff;
+    }
+
+    /* Give the dark-theme toggle button a "pressed" appearance when dark theme is active */
+    .theme-dark .theme-toggle-btn {
+        transform: translateY(2px) scale(0.995);
+        box-shadow: inset 0 3px 8px rgba(0,0,0,0.55);
+        background: rgba(255,255,255,0.02);
+        border-radius: 6px;
+        color: var(--taskbtn-text);
+    }
+
+    /* Also provide a pressed look in light theme (slightly different) */
+    .theme-light .theme-toggle-btn {
+        transform: translateY(2px) scale(0.995);
+        box-shadow: inset 0 3px 8px rgba(0,0,0,0.06);
+        background: rgba(0,0,0,0.03);
+        border-radius: 6px;
+        color: var(--taskbtn-text);
+    }
+
+    /* Transition/animation behavior for theme switches and controls */
+    /* Make theme changes slower/smoother when switching (particularly to light) */
+    html, body, #application-display,
+    .app-window, .app-taskbar, .window-titlebar, .window-content,
+    .task-btn, .task-btn__badge, .task-btn__icon, .window-controls button {
+        transition: background-color 420ms ease, color 420ms ease, border-color 420ms ease, box-shadow 420ms ease;
+    }
+
+    /* Theme toggle button should animate transform & shadow quickly but still feel smooth */
+    .theme-toggle-btn {
+        transition: transform 160ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms ease, background-color 320ms ease, color 320ms ease;
+        will-change: transform, box-shadow, background-color;
+    }
+
+    /* Provide immediate pressed feedback on pointer down (covers click/touch) */
+    .theme-toggle-btn:active {
+        transform: translateY(3px) scale(0.994) !important;
+        box-shadow: inset 0 4px 10px rgba(0,0,0,0.55) !important;
+    }
+
+    /* Slightly emphasize task buttons when the theme is dark (optional) */
+    .theme-dark .task-btn { box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
+    .theme-light .task-btn { box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+
+    /* Ensure components that had hard-coded white adapt to theme variables */
+    .window-titlebar { background-color: var(--titlebar-bg); color: var(--titlebar-text); }
+    .window-controls button { color: var(--titlebar-text); }
+
+    /* In light theme make hover backgrounds darker for contrast */
+    .theme-light .window-controls button:hover { 
+        background-color: rgba(0,0,0,0.06); 
+    }
