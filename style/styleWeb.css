@@ -108,3 +108,19 @@ pre {
   border-radius: 4px;
   font-family: monospace;
 }
+
+.visually-hidden{
+  color: white;
+  padding: 7px;
+  background-color: #15222f;
+  border-radius: 5px 0px 0px 5px;
+  border: none;
+  margin-right: -7px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+hr{
+  border: none;
+  margin: 0;
+  padding: 0;
+}
