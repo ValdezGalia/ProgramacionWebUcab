@@ -7,6 +7,8 @@
     <meta name="description" content="Un explorador de archivos tree view (vista de arbol)">
     <meta name="author" content="Orlando Valdez / Jenry Youssef / Oscar Torres">
     <title>Explorador de Archivos</title>
+    
+    <link rel="stylesheet" href="/style/exploradorArchivos.css"> 
 </head>
 
 <body>
@@ -16,10 +18,10 @@
     </header>
 
     <main>
-        <hr>
+        
         <nav aria-label="Estructura del sistema de archivos">
             <ul>
-                <li>
+                <li>    
                     <details open>
                         <summary>📂 / </summary>
                         <ul>
@@ -75,11 +77,23 @@
                     📄 README.md
                 </li>
             </ul>
-            </details>
-            </li>
-            </ul>
         </nav>
-    </main>
-</body>
 
+        <div class="panel-derecho">
+            <h2>Detalles del Archivo</h2>
+            <p>Selecciona un archivo o carpeta para ver sus propiedades aquí</p>
+            <ul>
+                <li>Nombre:</li>
+                <li>Tipo:</li>
+                <li>Tamaño:</li>
+            </ul>
+        </div>
+        
+    </main>
+
+    <footer id="barra-estado">
+        <p>Un Total de 6 carpetas y 5 archivos | 1.5 MB</p>
+    </footer>
+
+</body>
 </html>
