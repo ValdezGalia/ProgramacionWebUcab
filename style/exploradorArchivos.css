@@ -12,17 +12,15 @@ body {
 
 header {
     font-family: Tahoma, "MS Sans Serif", Arial, sans-serif; 
-    background-color: #000080; 
+    background-color: #453D3C; 
     width: 100%;
     border: 2px outset #c0c0c0; 
+    margin: 0; 
+    padding: 15px;
 }
 
 h1 {
-    font-size: 16px;
-    color: white;
-    margin: 0; 
-    padding: 15px;
-    font-weight: bold;
+    display: none;
 }
 
 
@@ -34,23 +32,24 @@ main nav {
     float: left; 
     width: 30%;
     margin: 20px; 
-    background-color: white;
+    background-color: #A8A09E;
     border: 5px solid #B3B3B3;
     padding: 15px; 
-    min-height: 400px;
+    min-height: 600px;
 }
 
 .panel-derecho {
     float: left; 
     width: 60%;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0    ; 
     margin-right: 20px;
     margin-left: 0; 
     background-color: white;
     border: 5px solid #B3B3B3;
     padding: 15px;
     min-height: 400px;
+    
 }
 
 
@@ -76,7 +75,7 @@ nav details[open] > summary::before {
     font-size: 1.1em;
     margin-top: 0;
     margin-bottom: 10px;
-    color: #000080; 
+    color: #D1621F; 
 }
 
 .panel-derecho ul {
@@ -90,16 +89,20 @@ nav details[open] > summary::before {
 }
 
 #barra-estado {
-    background-color: #c0c0c0;
+    background-color: #A8A09E;
     border: 2px solid;
     border-top-color: #808080;
     border-left-color: #808080;
     border-right-color: #fff;
     border-bottom-color: #fff;
-    margin: 0 20px 20px 20px;
     padding: 5px 10px;
     font-size: 14px;
-    color: #000080;
+    color: black;
+    width: fit-content; 
+    margin-top: 0;   
+    margin-right: auto;    
+    margin-left: auto;     
+    margin-bottom: 20px;
 }
 
 #barra-estado p {

@@ -1,21 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Momo+Signature&display=swap');
-
-.momo-signature-regular {
-  font-family: "Momo Signature", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
 header{
-    background-color: #40A7D6;
-    color: beige;
-    padding: 10px;
+    display: none;
 }
 
 
 h1{
     text-align: center;
-    font-family: "Momo Signature", cursive;
+    font-family: "Segoe UI", Arial, sans-serif;
     font-size:x-large;
 }
 
@@ -24,7 +14,7 @@ body{
 }
 
 #file-controls{
-    font-family: "Momo Signature", cursive;
+    font-family: "Segoe UI", Arial, sans-serif;
     width: 40%;
     margin: 0 auto; 
     margin-top: 3%;
@@ -47,12 +37,13 @@ body{
 
 
 #file-controls button{
-    font-family: "Momo Signature", cursive;
+    font-family: "Segoe UI", Arial, sans-serif;
     border-radius: 10px;
     color: #302B29;
     background-color: #7AA0FF;
     width: 15%;
     transition: transform 0.3s ease;  
+    font-size: 100%;
 }
 
 #file-controls button:hover{
@@ -75,7 +66,7 @@ body{
 }
 
 #editor-area legend{
-    font-family: "Momo Signature", cursive;
+    font-family: "Segoe UI", Arial, sans-serif;
     color: #473929;
 }
 
@@ -87,11 +78,13 @@ body{
 }
 
 #editor-actions button{
-    font-family: "Momo Signature", cursive;
+    font-family: "Segoe UI", Arial, sans-serif;
     display: flow-root;
     color: #302B29;
     width: 15%;
     transition: transform 0.3s ease;
+    font-size: 100%;
+
 }
 
 #save-button {
@@ -118,7 +111,15 @@ body{
 }
 
 #status-message{
-    font-family: "Momo Signature", cursive;
+    font-family: "Segoe UI", Arial, sans-serif;
     text-align: center;
     color: #473929;
+}
+
+
+#file-upload-controls input{
+    background-color: #7AA0FF;  
+    transform: scale(1.1);
+    margin-left: 5%;
+    width: 27%;
 }
