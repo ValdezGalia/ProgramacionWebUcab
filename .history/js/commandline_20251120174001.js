@@ -12,7 +12,7 @@ input.addEventListener('keydown', ({ key }) => {
 
         // 1. Imprimir el comando que el usuario escribió (Historial)
         // Usamos innerHTML para permitir saltos de línea si fuera necesario
-        output.innerHTML += `\n<span class="prompt" style="color: #42a03a">${promptText}></span> ${command}`;
+        output.innerHTML += `\n<span class="prompt">${promptText}</span> ${command}`;
 
         // 2. Procesar el comando
         if (command !== "") {
@@ -24,18 +24,6 @@ input.addEventListener('keydown', ({ key }) => {
         scrollToBottom();
     }
 });
-
-/**
- *  
- *  ping (envía IcmpPacket con ECHO_REQUEST, mide RTT, muestra stats)
-    curl (simula el Fetch: construye HttpPacket, envía, muestra respuesta)
-    traceroute (envía IcmpPacket con TTL incremental, muestra hops)
-    pathping (combina ping/traceroute para stats ruta)
-    ipconfig (muestra IP local de DHCP, MAC simulada)
-    flushdns (Elimina las entradas de nombres de dominio en el mapa LocalStorage)
-    tree (muestra el contenido del sistema de archivos como texto)
-    help (lista de los comandos con sus descripciones respectivas).
- */
 
 function executeCommand(cmd) {
     const args = cmd.split(' '); // Dividir por espacios (para futuros argumentos)

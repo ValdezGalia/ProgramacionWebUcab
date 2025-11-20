@@ -12,7 +12,7 @@ input.addEventListener('keydown', ({ key }) => {
 
         // 1. Imprimir el comando que el usuario escribió (Historial)
         // Usamos innerHTML para permitir saltos de línea si fuera necesario
-        output.innerHTML += `\n<span class="prompt" style="color: #42a03a">${promptText}></span> ${command}`;
+        output.innerHTML += `\n<span class="prompt" style="color: #42a03a">${promptText}</span> ${command}`;
 
         // 2. Procesar el comando
         if (command !== "") {
