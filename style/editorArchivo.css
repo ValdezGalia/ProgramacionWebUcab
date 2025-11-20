@@ -1,125 +1,177 @@
-header{
-    display: none;
+/* 1. Fuentes Ubuntu */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+/* 2. Reseteo Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
 }
 
-
-h1{
-    text-align: center;
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size:x-large;
+html, body {
+    height: 100%; /* Necesario para centrar verticalmente */
 }
 
-body{
-    background-color: beige;
+/* 3. Fondo estilo Escritorio Ubuntu */
+body {
+    background-color: #2c001e;
+    background-image: linear-gradient(135deg, #2c001e 0%, #5E2750 100%);
+    display: flex;
+    align-items: stretch; /* permitir que el contenedor llene verticalmente */
+    justify-content: stretch; /* permitir que el contenedor llene horizontalmente */
+    font-family: 'Ubuntu', sans-serif;
+    height: 100vh;
+    width: 100vw;
 }
 
-#file-controls{
-    font-family: "Segoe UI", Arial, sans-serif;
-    width: 40%;
-    margin: 0 auto; 
-    margin-top: 3%;
-    border-radius: 10px;
-    border-color: #40A7D6;
-    border-width: 10px;
-
+/* 4. Ventana Principal (Contenedor) */
+#file-editor {
+    background-color: #F7F7F7; /* El fondo de la ventana */
+    width: 100%;
+    height: 100%;
+    border-radius: 0; /* quitar radio para ajustar al body; cambia si quieres borde */
+    box-shadow: none; /* quitar sombra para que se integre al body */
+    display: flex;
+    flex-direction: column; /* Para organizar Form arriba y Footer abajo */
+    overflow: hidden;
 }
 
-#file-controls legend, label{
-    color: #473929;
+/* 5. OCULTAR Header y HR (Lo que pediste) */
+header, hr {
+    display: none !important;
 }
 
-#file-controls input{
-    font-family:'Times New Roman', Times, serif;
-    font-size: medium;
-    border-radius: 10px;
-    width: 300px;
+/* 6. El Formulario (Ocupa todo el espacio restante) */
+#editor-form {
+    flex: 1; /* ESTO hace que ocupe todo el espacio disponible */
+    display: flex;
+    flex-direction: column; /* Organiza los fieldsets verticalmente */
+    padding: 20px;
+    overflow: hidden; /* Evita scroll doble */
 }
 
-
-#file-controls button{
-    font-family: "Segoe UI", Arial, sans-serif;
-    border-radius: 10px;
-    color: #302B29;
-    background-color: #7AA0FF;
-    width: 15%;
-    transition: transform 0.3s ease;  
-    font-size: 100%;
+/* Quitamos bordes de los fieldsets para que se vea limpio */
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
-#file-controls button:hover{
-    transform: scale(1.1);
+/* 7. Parte Superior: Controles (Inputs) */
+#file-controls {
+    flex: 0 0 auto; /* No crece, altura fija según contenido */
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-
-#file-controls label{
-    font-size: medium;
+legend {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #E95420; /* Naranja Ubuntu */
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
+#file-path-controls {
+    display: flex;
+    gap: 10px;
+}
+
+#file-path {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid #CDC7C2;
+    border-radius: 4px;
+    font-family: 'Ubuntu', sans-serif;
+}
+#file-path:focus { border-color: #E95420; }
+
+/* Botones Superiores */
+#file-controls button, #file-upload-controls input {
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+    padding: 8px 15px;
+    background: #EAEAEA;
+    border: 1px solid #CDC7C2;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+#file-upload-controls {
+    margin-top: 5px;
+}
+
+/* 8. Parte Central: Área de Texto (EXPANSIÓN MÁXIMA) */
 #editor-area {
-    width: 50%;
-    margin: 0 auto; 
-    margin-top: 3%; 
-    border-radius: 10px;
-    border-color: #40A7D6;
-    border-width: 10px;
-
+    flex: 1; /* Crece para ocupar todo el espacio vertical sobrante */
+    display: flex;
+    flex-direction: column;
 }
 
-#editor-area legend{
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: #473929;
+#editor-area textarea {
+    flex: 1; /* El textarea se estira al 100% del alto del padre */
+    width: 100%;
+    resize: none; /* Quitar resize manual porque ya es automático */
+    border: 1px solid #CDC7C2;
+    border-radius: 4px;
+    padding: 15px;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
 }
 
-#editor-area textarea{
-    font-family:'Times New Roman', Times, serif;
-    font-size: medium;
-    border-radius: 10px;
-
+#editor-area textarea:focus {
+    border-color: #E95420;
 }
 
-#editor-actions button{
-    font-family: "Segoe UI", Arial, sans-serif;
-    display: flow-root;
-    color: #302B29;
-    width: 15%;
-    transition: transform 0.3s ease;
-    font-size: 100%;
+/* 9. Botones de Acción (Flotantes o abajo) */
+#editor-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end; /* Alineados a la derecha */
+    gap: 10px;
+    flex: 0 0 auto; /* Altura fija */
+}
 
+/* Reseteo de tus botones con IDs específicos */
+#save-button, #close-button {
+    float: none !important;
+    margin: 0 !important;
+    width: auto !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: transform 0.1s;
 }
 
 #save-button {
-  float: left;
-  margin-left: 30%;
-  background-color: #A1ED32;
-  border-radius: 10px;
+    background-color: #E95420; /* Naranja Primario */
+    color: white;
+    border: 1px solid #E95420;
 }
-
-#save-button:hover{
-    transform: scale(1.1);
-}
-
-#close-button:hover{
-    transform: scale(1.1);
-}
-
 
 #close-button {
-  float: right;
-  margin-right: 30%;
-  background-color: #ED6432;
-  border-radius: 10px;
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #CDC7C2;
 }
 
-#status-message{
-    font-family: "Segoe UI", Arial, sans-serif;
-    text-align: center;
-    color: #473929;
+#save-button:hover, #close-button:hover {
+    transform: translateY(-1px); /* Pequeño efecto de elevación */
 }
 
-
-#file-upload-controls input{
-    background-color: #7AA0FF;  
-    transform: scale(1.1);
-    margin-left: 5%;
-    width: 27%;
+/* 10. Footer (Barra de estado) */
+footer {
+    flex: 0 0 auto; /* Altura fija */
+    background-color: #EAEAEA;
+    border-top: 1px solid #CDC7C2;
+    padding: 5px 20px;
+    font-size: 0.8rem;
+    color: #666;
 }

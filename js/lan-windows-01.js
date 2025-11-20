@@ -182,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // clear saved copy
         delete taskbar._savedFooterHtml;
     }
+    
 
     // Theme handling
     // Apply theme only to the parent shell. Use a parent-specific storage key so
@@ -770,4 +771,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Estado inicial: Desactivar todos los íconos al inicio
     navLinks.forEach(navLink => navLink.classList.remove('active'));
+
 });
+
+// Create taskbar structure and mount it into footer if present.
+    

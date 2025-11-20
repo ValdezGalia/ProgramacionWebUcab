@@ -4,8 +4,7 @@
 // focused on behavior.
 
 (function () {
-    // Create taskbar structure and mount it into footer if present.
-    const taskbar = document.createElement('div');
+     const taskbar = document.createElement('div');
     taskbar.id = 'app-taskbar';
     taskbar.className = 'app-taskbar';
 
@@ -63,5 +62,4 @@
     window.taskbarRight = taskbarRight;
     window.toastContainer = toastContainer;
     window.showToast = showToast;
-
 })();
