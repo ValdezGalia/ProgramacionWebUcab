@@ -1,4 +1,4 @@
-// modal helper for lan-windows
+ // modal helper for lan-windows
 // This file creates a reusable confirmation modal and exposes showModal/hideModal
 // as globals so other scripts (e.g., lan-windows-01.js) can call them without
 // embedding modal DOM code inline.
