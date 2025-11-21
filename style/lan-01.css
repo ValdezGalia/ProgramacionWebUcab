@@ -9,6 +9,9 @@
     --base-font-size: 16px;
     --taskbtn-min-width: 70px;
     --taskbtn-min-height: 34px;
+    /* hover variables for app icons and bottom button (theme-aware) */
+    --app-hover-bg: rgba(255,255,255,0.1);
+    --app-hover-border: rgba(255,255,255,0.2);
 }
 
 /* Base Global */
@@ -36,6 +39,7 @@ html, body {
     padding: 10px 0;
     border-right: 1px solid var(--border-color);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    position: relative; /* allow absolute bottom control */
 }
 
 #app-list {
@@ -44,6 +48,50 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+/* Bottom area inside navigation for settings/help */
+#app-bottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.app-bottom-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    width: 64px;
+    height: 56px;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    border-radius: 8px;
+}
+.app-bottom-button:focus { outline: 2px solid rgba(0,0,0,0.12); }
+.app-bottom-button .app-icon { font-size: 1.15rem; }
+.app-bottom-button .app-label { font-size: 0.7rem; }
+
+/* Make bottom config button hover match app icons */
+.app-bottom-button {
+    transition: background-color 180ms ease, border-color 180ms ease;
+    border: 1px solid transparent;
+}
+.app-bottom-button:hover, .app-bottom-button:focus, .app-bottom-button:active {
+    background-color: var(--app-hover-bg);
+    border-color: var(--app-hover-border);
+}
+.app-bottom-button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 #app-list li {
@@ -102,7 +150,11 @@ html, body {
 #application-display {
     flex-grow: 1;
     padding: 10px;
-    background-color: var(--bg-primary); 
+    background-color: var(--bg-primary);
+    /* Fondo por defecto 'fondo' desde assets */
+    background-image: url("../assets/img/fondo.webp");
+    background-size: cover;
+    background-position: center;
     overflow: hidden;
 }
 
@@ -509,6 +561,12 @@ footer {
         --titlebar-bg: #e9e9ea;
         --titlebar-text: #1f1f1f;
         --instance-hint-color: rgba(0,0,0,0.65);
+        /* make bg-menu adapt to light theme: light translucent panel */
+        --bg-menu-bg: rgba(255,255,255,0.78);
+        --bg-menu-border: rgba(0,0,0,0.06);
+        /* hover variables for apps in light theme */
+        --app-hover-bg: rgba(0,0,0,0.06);
+        --app-hover-border: rgba(0,0,0,0.12);
     }
     
     /* Dark-theme specific tweaks: slightly smaller text and pressed look for theme icon */
@@ -519,6 +577,12 @@ footer {
         --taskbtn-text: #ffffff;
         --titlebar-bg: #3f3f3f;
         --titlebar-text: #ffffff;
+        /* dark theme: subtly translucent dark panel */
+        --bg-menu-bg: rgba(28,28,28,0.72);
+        --bg-menu-border: rgba(255,255,255,0.06);
+        /* hover variables for apps in dark theme */
+        --app-hover-bg: rgba(255,255,255,0.1);
+        --app-hover-border: rgba(255,255,255,0.2);
     }
 
     /* Give the dark-theme toggle button a "pressed" appearance when dark theme is active */
@@ -562,6 +626,34 @@ footer {
     /* Slightly emphasize task buttons when the theme is dark (optional) */
     .theme-dark .task-btn { box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
     .theme-light .task-btn { box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+
+/* --- BG menu (submenú de fondo) --- */
+.bg-menu {
+    position: absolute;
+    width: 280px;
+    background-color: var(--bg-menu-bg, rgba(28,28,28,0.72));
+    color: var(--color-text);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--bg-menu-border, rgba(255,255,255,0.06));
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 12000;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease, box-shadow 240ms ease, backdrop-filter 240ms ease;
+    will-change: background-color, border-color, color, backdrop-filter;
+}
+.bg-menu.show { display: flex; }
+.bg-menu__title { font-weight: 700; font-size: 0.95rem; }
+.bg-menu__section { display:flex; flex-direction:column; gap:6px; }
+.bg-menu__controls { display:flex; gap:8px; align-items:center; }
+.bg-color-input { width:36px; height:28px; padding:0; border-radius:6px; border:1px solid var(--bg-menu-border); }
+.bg-preset { width:32px; height:20px; border-radius:6px; border:1px solid var(--bg-menu-border); cursor:pointer; }
+.bg-menu__actions { display:flex; gap:8px; justify-content:flex-end; }
+.bg-action { background: transparent; border:1px solid var(--bg-menu-border); padding:6px 8px; border-radius:6px; color:var(--color-text); cursor:pointer; }
 
     /* Ensure components that had hard-coded white adapt to theme variables */
     .window-titlebar { background-color: var(--titlebar-bg); color: var(--titlebar-text); }
