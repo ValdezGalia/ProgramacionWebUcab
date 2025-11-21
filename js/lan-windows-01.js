@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const mainContainer = document.getElementById('application-display');
     const navLinks = document.querySelectorAll('#app-list a');
@@ -130,8 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
     themeBtn.type = 'button';
     themeBtn.title = 'Cambiar tema';
     taskbarRight.appendChild(themeBtn);
-
-    // Modal dialog handled by `js/lan-windows-modal.js` which exposes showModal/hideModal
 
     // Botón para cerrar todas las ventanas abiertas
     const closeAllBtn = document.createElement('button');
